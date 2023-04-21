@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../constants.dart';
+import '../../models/product_model.dart';
+import '../../repositories/product_repositories.dart';
+
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
@@ -80,6 +83,22 @@ class ListProduct extends StatefulWidget {
 }
 
 class _ListProductState extends State<ListProduct> {
+
+  final ProductRepositories _productRepositories = ProductRepositories();
+  late final Future<List<ProductModel>> futureProducts;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    //Khai bao data
+    _initData();
+  }
+
+  _initData() async {
+    futureProducts = _productRepositories.getAllProducts();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
