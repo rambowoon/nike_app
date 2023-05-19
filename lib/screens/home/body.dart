@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../constants.dart';
 import '../../models/product_model.dart';
-import '../../repositories/product_repositories.dart';
+import '../../providers/product_provider.dart';
+import '../widgets/product_item.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 
 class Body extends StatelessWidget {
@@ -15,7 +17,7 @@ class Body extends StatelessWidget {
       child: Column(
         children: [
           SearchProduct(),
-          SizedBox(height: kDefaultPadding,),
+          SizedBox(height: 10,),
           ListProduct()
         ],
       ),
@@ -75,46 +77,40 @@ class _SearchProductState extends State<SearchProduct> {
   }
 }
 
-class ListProduct extends StatefulWidget {
+class ListProduct extends ConsumerWidget {
   const ListProduct({Key? key}) : super(key: key);
 
   @override
-  State<ListProduct> createState() => _ListProductState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
 
-class _ListProductState extends State<ListProduct> {
-
-  final ProductRepositories _productRepositories = ProductRepositories();
-  late final Future<List<ProductModel>> futureProducts;
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    //Khai bao data
-    _initData();
-  }
-
-  _initData() async {
-    futureProducts = _productRepositories.getAllProducts();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: GridView.builder(
-        shrinkWrap: true,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-        ),
-        itemCount: 20,
-        itemBuilder: (BuildContext context, int index) {
-          return Card(
-            color: Colors.amber,
-            child: Center(child: Text('$index')),
+    return FutureBuilder(
+      future: ref.read(ProductProvider.notifier).getAllProduct(),
+      builder: (context, snapshot){
+        if(snapshot.hasData){
+          final listProduct = ref.watch(ProductProvider.select((value) => value.listProduct));
+          return Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(left: kDefaultPadding, right: kDefaultPadding),
+              child: GridView.builder(
+                shrinkWrap: true,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 4/6
+                ),
+                itemCount: listProduct?.length,
+                itemBuilder: (BuildContext context, int index) {
+                  final ProductModel productModel = listProduct![index];
+                  return ProductItem(product: productModel);
+                }
+              ),
+            ),
           );
         }
-      ),
+        if(snapshot.hasError){
+          return Text('Server đang có vấn đề');
+        }
+        return Center(child: CircularProgressIndicator.adaptive(),);
+      },
     );
   }
 }

@@ -13,7 +13,6 @@ class ProductRepositories{
         result.add(ProductModel.fromJson(item));
       }
     }
-    print(result);
     return result;
   }
 

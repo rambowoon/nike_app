@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:nike/adapters/cart_hive.dart';
 import 'constants.dart';
 import 'screens/home/home_screen.dart';
 
-void main() {
-  runApp(const MyApp());
+Future main() async{
+  await Hive.initFlutter();
+  await Hive.openBox<CartHive>('cart');
+  runApp(ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
