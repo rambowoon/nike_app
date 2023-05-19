@@ -7,6 +7,7 @@ import 'screens/home/home_screen.dart';
 
 Future main() async{
   await Hive.initFlutter();
+  Hive.registerAdapter(CartHiveAdapter());
   await Hive.openBox<CartHive>('cart');
   runApp(ProviderScope(child: MyApp()));
 }

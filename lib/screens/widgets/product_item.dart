@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nike/models/product_model.dart';
 
+import '../../adapters/cart_hive.dart';
 import '../../providers/cart_provider.dart';
 
 class ProductItem extends ConsumerWidget {
@@ -92,7 +93,16 @@ class ProductItem extends ConsumerWidget {
           ),
           SizedBox(height: 5,),
           ElevatedButton.icon(
-            onPressed: () {},
+            onPressed: () {
+              CartHive newItem = CartHive(
+                id: product.id,
+                title: product.title,
+                price: product.price,
+                image: product.image,
+                quantity: 1,
+              );
+              cart.addItemToCart(newItem);
+            },
             icon: Icon( // <-- Icon
               Icons.add_shopping_cart,
               size: 24.0,
