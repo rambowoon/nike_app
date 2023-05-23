@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nike/providers/product_notifier.dart';
 import '../models/product_model.dart';
-import '../repositories/product_repositories.dart';
 
 class ProductState{
   final List<ProductModel>? listProduct;
@@ -17,16 +17,3 @@ class ProductState{
 final ProductProvider = StateNotifierProvider<ProductController,  ProductState>((ref) {
   return ProductController();
 });
-
-class ProductController extends StateNotifier<ProductState> {
-  final ProductRepositories _productRepositoreies = ProductRepositories();
-  // final List<ProductModel>? listProduct;
-  ProductController() : super(ProductState(listProduct: []));
-
-
-  getAllProduct() async {
-    final list = await _productRepositoreies.getAllProducts();
-    state = state.copyWith(listProduct: list, isLoaded: true);
-    return Future(() => list);
-  }
-}

@@ -13,7 +13,6 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: kBackgroundColor,
       child: Column(
         children: [
           SearchProduct(),
@@ -95,7 +94,7 @@ class ListProduct extends ConsumerWidget {
                 shrinkWrap: true,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  childAspectRatio: 4/6
+                  childAspectRatio: 4/6.2
                 ),
                 itemCount: listProduct?.length,
                 itemBuilder: (BuildContext context, int index) {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nike/constants.dart';
 import 'package:nike/models/product_model.dart';
 
 import '../../adapters/cart_hive.dart';
@@ -19,26 +20,30 @@ class ProductItem extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Stack(
-              children: [
-                Image.network(
+            children: [
+              Align(
+                alignment: Alignment.center,
+                child: Image.network(
                   product.image.toString(),
-                  fit: BoxFit.fitWidth,
+                  fit: BoxFit.contain,
                   height: 150,
+                  alignment: Alignment.center,
                 ),
-                Positioned(
-                  top: 0,
-                  right: 0,
-                  child: IconButton(
-                    icon: Icon(
-                      Icons.favorite_outlined,
-                      color: Colors.red,
-                    ),
-                    onPressed: () {
-
-                    },
+              ),
+              Positioned(
+                top: 0,
+                right: 0,
+                child: IconButton(
+                  icon: Icon(
+                    Icons.favorite_outlined,
+                    color: Colors.red,
                   ),
-                )
-              ]
+                  onPressed: () {
+
+                  },
+                ),
+              )
+            ]
           ),
           SizedBox(height: 5,),
           Padding(
@@ -47,7 +52,7 @@ class ProductItem extends ConsumerWidget {
                 product.title.toString(),
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 16,
+                  fontSize: 15,
                 ),
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis
@@ -103,11 +108,20 @@ class ProductItem extends ConsumerWidget {
               );
               cart.addItemToCart(newItem);
             },
-            icon: Icon( // <-- Icon
+            icon: Icon(
               Icons.add_shopping_cart,
               size: 24.0,
             ),
-            label: Text('Thêm vào giỏ hàng'), // <-- Text
+            label: Text(
+              'Add To Cart',
+              style: TextStyle(
+                color: Colors.white
+              ),
+            ),
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(kPrimaryColor),
+              iconColor: MaterialStateProperty.all(Colors.white)
+            ),
           ),
         ],
       ),
