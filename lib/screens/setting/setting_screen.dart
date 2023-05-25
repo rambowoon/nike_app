@@ -75,8 +75,7 @@ class SettingScreen extends ConsumerWidget {
             )
           ],
         ),
-      ),
-      bottomNavigationBar: const BottomTab(),
+      )
     );
   }
 }

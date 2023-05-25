@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nike/constants.dart';
 import 'package:nike/models/product_model.dart';
+import 'package:nike/providers/favorite_products_provider.dart';
 
 import '../../adapters/cart_hive.dart';
 import '../../providers/cart_provider.dart';
@@ -14,6 +15,8 @@ class ProductItem extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final cart = ref.read(cartProvider.notifier);
+    final favoriteProducts = ref.watch(favoriteProductsProvider);
+    final checkFavorite = favoriteProducts.contains(product.id ?? 0);
 
     return Card(
       child: Column(
@@ -35,11 +38,11 @@ class ProductItem extends ConsumerWidget {
                 right: 0,
                 child: IconButton(
                   icon: Icon(
-                    Icons.favorite_outlined,
+                    checkFavorite ? Icons.favorite_outlined : Icons.favorite_border,
                     color: Colors.red,
                   ),
                   onPressed: () {
-
+                    ref.read(favoriteProductsProvider.notifier).toggle(product.id ?? 0);
                   },
                 ),
               )

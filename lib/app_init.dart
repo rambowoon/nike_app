@@ -13,8 +13,6 @@ class AppInit{
     }else{
       settingHive = _box.getAt(0)!;
     }
-    print(settingHive.themeMode);
-    print(settingHive.language);
   }
 
   static update({SettingHive? data}){

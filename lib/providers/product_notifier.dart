@@ -9,6 +9,7 @@ class ProductController extends StateNotifier<ProductState> {
   ProductController() : super(ProductState(listProduct: []));
 
 
+
   getAllProduct() async {
     final list = await _productRepositoreies.getAllProducts();
     state = state.copyWith(listProduct: list, isLoaded: true);

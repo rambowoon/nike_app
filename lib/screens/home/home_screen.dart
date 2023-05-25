@@ -12,7 +12,6 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: buildAppBar('Explore',true, true),
       body: Body(),
-      bottomNavigationBar: const BottomTab(),
     );
   }
 }

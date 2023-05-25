@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nike/adapters/cart_hive.dart';
 import '../../providers/cart_provider.dart';
 import '../widgets/app_bar.dart';
-import '../widgets/bottom_tab.dart';
 
 class CartScreen extends ConsumerWidget {
   @override
@@ -61,7 +61,8 @@ class CartScreen extends ConsumerWidget {
                         IconButton(
                           icon: Icon(Icons.delete),
                           onPressed: () {
-                            ref.read(cartProvider).removeItemFromCart(item);
+                            _showDeleteConfirmationDialog(context, ref, item);
+
                           },
                         ),
                       ],
@@ -74,8 +75,33 @@ class CartScreen extends ConsumerWidget {
         },
       ) : Center(
         child: Text('Your cart is empty.'),
-      ),
-      bottomNavigationBar: const BottomTab(),
+      )
     );
   }
+}
+void _showDeleteConfirmationDialog(BuildContext context,  WidgetRef ref, CartHive item) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Xóa?'),
+        content: Text('Bạn có chắc chắn muốn xóa?'),
+        actions: <Widget>[
+          TextButton(
+            child: Text('Hủy'),
+            onPressed: () {
+              Navigator.of(context).pop(); // Đóng AlertDialog
+            },
+          ),
+          TextButton(
+            child: Text('Xóa'),
+            onPressed: () {
+              ref.read(cartProvider).removeItemFromCart(item);
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      );
+    },
+  );
 }
