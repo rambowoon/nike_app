@@ -9,15 +9,19 @@ part 'product_model.g.dart';
 class ProductModel with _$ProductModel {
   const factory ProductModel({
     int? id,
-    double? price,
+    String? photo,
+    String? title,
     String? description,
+    double? price,
+    double? price_new,
+    int? discount,
+    int? view,
+    String? type,
     String? image,
-    RatingModel? rating,
-    String? title
+    List<dynamic>? gallery,
+    RatingModel? rating
   }) = _ProductModel;
-  
-  
 
   factory ProductModel.fromJson(Map<String, dynamic> json) =>
-      _$ProductModelFromJson(json);
+  _$ProductModelFromJson(json);
 }

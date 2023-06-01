@@ -21,11 +21,17 @@ ProductModel _$ProductModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ProductModel {
   int? get id => throw _privateConstructorUsedError;
-  double? get price => throw _privateConstructorUsedError;
-  String? get description => throw _privateConstructorUsedError;
-  String? get image => throw _privateConstructorUsedError;
-  RatingModel? get rating => throw _privateConstructorUsedError;
+  String? get photo => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
+  double? get price => throw _privateConstructorUsedError;
+  double? get price_new => throw _privateConstructorUsedError;
+  int? get discount => throw _privateConstructorUsedError;
+  int? get view => throw _privateConstructorUsedError;
+  String? get type => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
+  List<dynamic>? get gallery => throw _privateConstructorUsedError;
+  RatingModel? get rating => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,11 +47,17 @@ abstract class $ProductModelCopyWith<$Res> {
   @useResult
   $Res call(
       {int? id,
-      double? price,
+      String? photo,
+      String? title,
       String? description,
+      double? price,
+      double? price_new,
+      int? discount,
+      int? view,
+      String? type,
       String? image,
-      RatingModel? rating,
-      String? title});
+      List<dynamic>? gallery,
+      RatingModel? rating});
 
   $RatingModelCopyWith<$Res>? get rating;
 }
@@ -64,37 +76,67 @@ class _$ProductModelCopyWithImpl<$Res, $Val extends ProductModel>
   @override
   $Res call({
     Object? id = freezed,
-    Object? price = freezed,
-    Object? description = freezed,
-    Object? image = freezed,
-    Object? rating = freezed,
+    Object? photo = freezed,
     Object? title = freezed,
+    Object? description = freezed,
+    Object? price = freezed,
+    Object? price_new = freezed,
+    Object? discount = freezed,
+    Object? view = freezed,
+    Object? type = freezed,
+    Object? image = freezed,
+    Object? gallery = freezed,
+    Object? rating = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
+      photo: freezed == photo
+          ? _value.photo
+          : photo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
       price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double?,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
+      price_new: freezed == price_new
+          ? _value.price_new
+          : price_new // ignore: cast_nullable_to_non_nullable
+              as double?,
+      discount: freezed == discount
+          ? _value.discount
+          : discount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      view: freezed == view
+          ? _value.view
+          : view // ignore: cast_nullable_to_non_nullable
+              as int?,
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
               as String?,
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
+      gallery: freezed == gallery
+          ? _value.gallery
+          : gallery // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>?,
       rating: freezed == rating
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
               as RatingModel?,
-      title: freezed == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String?,
     ) as $Val);
   }
 
@@ -121,11 +163,17 @@ abstract class _$$_ProductModelCopyWith<$Res>
   @useResult
   $Res call(
       {int? id,
-      double? price,
+      String? photo,
+      String? title,
       String? description,
+      double? price,
+      double? price_new,
+      int? discount,
+      int? view,
+      String? type,
       String? image,
-      RatingModel? rating,
-      String? title});
+      List<dynamic>? gallery,
+      RatingModel? rating});
 
   @override
   $RatingModelCopyWith<$Res>? get rating;
@@ -143,37 +191,67 @@ class __$$_ProductModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? price = freezed,
-    Object? description = freezed,
-    Object? image = freezed,
-    Object? rating = freezed,
+    Object? photo = freezed,
     Object? title = freezed,
+    Object? description = freezed,
+    Object? price = freezed,
+    Object? price_new = freezed,
+    Object? discount = freezed,
+    Object? view = freezed,
+    Object? type = freezed,
+    Object? image = freezed,
+    Object? gallery = freezed,
+    Object? rating = freezed,
   }) {
     return _then(_$_ProductModel(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
+      photo: freezed == photo
+          ? _value.photo
+          : photo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
       price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double?,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
+      price_new: freezed == price_new
+          ? _value.price_new
+          : price_new // ignore: cast_nullable_to_non_nullable
+              as double?,
+      discount: freezed == discount
+          ? _value.discount
+          : discount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      view: freezed == view
+          ? _value.view
+          : view // ignore: cast_nullable_to_non_nullable
+              as int?,
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
               as String?,
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
+      gallery: freezed == gallery
+          ? _value._gallery
+          : gallery // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>?,
       rating: freezed == rating
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
               as RatingModel?,
-      title: freezed == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -183,11 +261,18 @@ class __$$_ProductModelCopyWithImpl<$Res>
 class _$_ProductModel with DiagnosticableTreeMixin implements _ProductModel {
   const _$_ProductModel(
       {this.id,
-      this.price,
+      this.photo,
+      this.title,
       this.description,
+      this.price,
+      this.price_new,
+      this.discount,
+      this.view,
+      this.type,
       this.image,
-      this.rating,
-      this.title});
+      final List<dynamic>? gallery,
+      this.rating})
+      : _gallery = gallery;
 
   factory _$_ProductModel.fromJson(Map<String, dynamic> json) =>
       _$$_ProductModelFromJson(json);
@@ -195,19 +280,39 @@ class _$_ProductModel with DiagnosticableTreeMixin implements _ProductModel {
   @override
   final int? id;
   @override
-  final double? price;
+  final String? photo;
+  @override
+  final String? title;
   @override
   final String? description;
   @override
+  final double? price;
+  @override
+  final double? price_new;
+  @override
+  final int? discount;
+  @override
+  final int? view;
+  @override
+  final String? type;
+  @override
   final String? image;
+  final List<dynamic>? _gallery;
+  @override
+  List<dynamic>? get gallery {
+    final value = _gallery;
+    if (value == null) return null;
+    if (_gallery is EqualUnmodifiableListView) return _gallery;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   final RatingModel? rating;
-  @override
-  final String? title;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ProductModel(id: $id, price: $price, description: $description, image: $image, rating: $rating, title: $title)';
+    return 'ProductModel(id: $id, photo: $photo, title: $title, description: $description, price: $price, price_new: $price_new, discount: $discount, view: $view, type: $type, image: $image, gallery: $gallery, rating: $rating)';
   }
 
   @override
@@ -216,11 +321,17 @@ class _$_ProductModel with DiagnosticableTreeMixin implements _ProductModel {
     properties
       ..add(DiagnosticsProperty('type', 'ProductModel'))
       ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('price', price))
+      ..add(DiagnosticsProperty('photo', photo))
+      ..add(DiagnosticsProperty('title', title))
       ..add(DiagnosticsProperty('description', description))
+      ..add(DiagnosticsProperty('price', price))
+      ..add(DiagnosticsProperty('price_new', price_new))
+      ..add(DiagnosticsProperty('discount', discount))
+      ..add(DiagnosticsProperty('view', view))
+      ..add(DiagnosticsProperty('type', type))
       ..add(DiagnosticsProperty('image', image))
-      ..add(DiagnosticsProperty('rating', rating))
-      ..add(DiagnosticsProperty('title', title));
+      ..add(DiagnosticsProperty('gallery', gallery))
+      ..add(DiagnosticsProperty('rating', rating));
   }
 
   @override
@@ -229,18 +340,38 @@ class _$_ProductModel with DiagnosticableTreeMixin implements _ProductModel {
         (other.runtimeType == runtimeType &&
             other is _$_ProductModel &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.price, price) || other.price == price) &&
+            (identical(other.photo, photo) || other.photo == photo) &&
+            (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
                 other.description == description) &&
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.price_new, price_new) ||
+                other.price_new == price_new) &&
+            (identical(other.discount, discount) ||
+                other.discount == discount) &&
+            (identical(other.view, view) || other.view == view) &&
+            (identical(other.type, type) || other.type == type) &&
             (identical(other.image, image) || other.image == image) &&
-            (identical(other.rating, rating) || other.rating == rating) &&
-            (identical(other.title, title) || other.title == title));
+            const DeepCollectionEquality().equals(other._gallery, _gallery) &&
+            (identical(other.rating, rating) || other.rating == rating));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, price, description, image, rating, title);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      photo,
+      title,
+      description,
+      price,
+      price_new,
+      discount,
+      view,
+      type,
+      image,
+      const DeepCollectionEquality().hash(_gallery),
+      rating);
 
   @JsonKey(ignore: true)
   @override
@@ -259,11 +390,17 @@ class _$_ProductModel with DiagnosticableTreeMixin implements _ProductModel {
 abstract class _ProductModel implements ProductModel {
   const factory _ProductModel(
       {final int? id,
-      final double? price,
+      final String? photo,
+      final String? title,
       final String? description,
+      final double? price,
+      final double? price_new,
+      final int? discount,
+      final int? view,
+      final String? type,
       final String? image,
-      final RatingModel? rating,
-      final String? title}) = _$_ProductModel;
+      final List<dynamic>? gallery,
+      final RatingModel? rating}) = _$_ProductModel;
 
   factory _ProductModel.fromJson(Map<String, dynamic> json) =
       _$_ProductModel.fromJson;
@@ -271,15 +408,27 @@ abstract class _ProductModel implements ProductModel {
   @override
   int? get id;
   @override
-  double? get price;
+  String? get photo;
+  @override
+  String? get title;
   @override
   String? get description;
   @override
+  double? get price;
+  @override
+  double? get price_new;
+  @override
+  int? get discount;
+  @override
+  int? get view;
+  @override
+  String? get type;
+  @override
   String? get image;
   @override
-  RatingModel? get rating;
+  List<dynamic>? get gallery;
   @override
-  String? get title;
+  RatingModel? get rating;
   @override
   @JsonKey(ignore: true)
   _$$_ProductModelCopyWith<_$_ProductModel> get copyWith =>

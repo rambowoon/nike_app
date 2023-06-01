@@ -13,7 +13,6 @@ class AppInit{
     }else{
       settingHive = _box.getAt(0)!;
     }
-    print(settingHive.splash);
   }
 
   static update({SettingHive? data}){

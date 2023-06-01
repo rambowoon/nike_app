@@ -11,7 +11,7 @@ class ProductController extends AsyncNotifier<List<ProductModel>> {
   }
 
   Future<List<ProductModel>> getAllProduct() async {
-    final list = await _productRepositoreies.getAllProducts();
+    final list = await _productRepositoreies.getAllProducts(page: 1, limit: 20);
     return list;
   }
 }
