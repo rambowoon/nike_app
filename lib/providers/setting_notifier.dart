@@ -54,3 +54,16 @@ class LanguageNotifier extends Notifier<Locale> {
     return langMode;
   }
 }
+
+class SplashNotifier extends Notifier<bool> {
+  @override
+  bool build() {
+    return AppInit.settingHive.splash!;
+  }
+
+  changeSplash(bool? splash){
+    state = splash!;
+    AppInit.update(data: AppInit.settingHive.copyWith(splash: splash));
+    return splash;
+  }
+}

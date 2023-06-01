@@ -1,38 +1,41 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'setting_hive.dart';
+part of 'favorite_product_hive.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class SettingHiveAdapter extends TypeAdapter<SettingHive> {
+class FavoriteProductHiveAdapter extends TypeAdapter<FavoriteProductHive> {
   @override
-  final int typeId = 2;
+  final int typeId = 3;
 
   @override
-  SettingHive read(BinaryReader reader) {
+  FavoriteProductHive read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return SettingHive(
-      themeMode: fields[0] as String?,
-      language: fields[1] as String?,
-      splash: fields[2] as bool?,
+    return FavoriteProductHive(
+      id: fields[0] as int?,
+      title: fields[1] as String?,
+      price: fields[2] as double?,
+      image: fields[3] as String?,
     );
   }
 
   @override
-  void write(BinaryWriter writer, SettingHive obj) {
+  void write(BinaryWriter writer, FavoriteProductHive obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(4)
       ..writeByte(0)
-      ..write(obj.themeMode)
+      ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.language)
+      ..write(obj.title)
       ..writeByte(2)
-      ..write(obj.splash);
+      ..write(obj.price)
+      ..writeByte(3)
+      ..write(obj.image);
   }
 
   @override
@@ -41,7 +44,7 @@ class SettingHiveAdapter extends TypeAdapter<SettingHive> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is SettingHiveAdapter &&
+      other is FavoriteProductHiveAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

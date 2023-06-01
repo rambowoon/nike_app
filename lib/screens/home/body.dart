@@ -81,35 +81,28 @@ class ListProduct extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final productProvider = ref.watch(ProductProvider);
 
-    return FutureBuilder(
-      future: ref.read(ProductProvider.notifier).getAllProduct(),
-      builder: (context, snapshot){
-        if(snapshot.hasData){
-          final listProduct = ref.watch(ProductProvider.select((value) => value.listProduct));
-          return Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(left: kDefaultPadding, right: kDefaultPadding),
-              child: GridView.builder(
+    return productProvider.when(
+        data: (listProduct) => Expanded(
+          child: Padding(
+            padding: const EdgeInsets.only(left: kDefaultPadding, right: kDefaultPadding),
+            child: GridView.builder(
                 shrinkWrap: true,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  childAspectRatio: 4/6.2
+                    crossAxisCount: 2,
+                    childAspectRatio: 4/6.2
                 ),
                 itemCount: listProduct?.length,
                 itemBuilder: (BuildContext context, int index) {
                   final ProductModel productModel = listProduct![index];
                   return ProductItem(product: productModel);
                 }
-              ),
             ),
-          );
-        }
-        if(snapshot.hasError){
-          return Text('Server đang có vấn đề');
-        }
-        return Center(child: CircularProgressIndicator.adaptive(),);
-      },
+          ),
+        ),
+        error: (err, stack) => Text('Server đang có vấn đề'),
+        loading: () => Center(child: CircularProgressIndicator.adaptive())
     );
   }
 }

@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nike/providers/setting_provider.dart';
 import 'package:nike/setting_language.dart';
 import '../widgets/app_bar.dart';
-import '../widgets/bottom_tab.dart';
 
 class SettingScreen extends ConsumerWidget {
   final textShow = "Con cò bay lả bay la";
@@ -72,6 +71,14 @@ class SettingScreen extends ConsumerWidget {
                     )
                 ),
               ],
+            ),
+            ElevatedButton(
+                onPressed: (){
+                  ref.read(splashProvider.notifier).changeSplash(true);
+                },
+                child: Text(
+                    "Reset Splash"
+                )
             )
           ],
         ),

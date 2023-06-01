@@ -8,11 +8,12 @@ class AppInit{
   static settup() async {
     _box = await Hive.openBox('setting');
     if(_box.isEmpty){
-      settingHive = SettingHive(themeMode: 'light', language: 'vi');
+      settingHive = SettingHive(themeMode: 'light', language: 'vi', splash: true);
       _box.add(settingHive);
     }else{
       settingHive = _box.getAt(0)!;
     }
+    print(settingHive.splash);
   }
 
   static update({SettingHive? data}){

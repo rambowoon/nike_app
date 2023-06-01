@@ -13,9 +13,13 @@ class SettingHive extends HiveObject {
   @required
   String? language;
 
-  SettingHive({this.themeMode, this.language});
+  @HiveField(2)
+  @required
+  bool? splash;
 
-  SettingHive copyWith({String? themeMode, String? language}){
-    return SettingHive(themeMode: themeMode ?? this.themeMode, language: language ?? this.language);
+  SettingHive({this.themeMode, this.language, this.splash});
+
+  SettingHive copyWith({String? themeMode, String? language, bool? splash}){
+    return SettingHive(themeMode: themeMode ?? this.themeMode, language: language ?? this.language, splash: splash ?? this.splash);
   }
 }

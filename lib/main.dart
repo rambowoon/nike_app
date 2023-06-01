@@ -7,11 +7,13 @@ import 'package:nike/adapters/setting_hive.dart';
 import 'package:nike/app_init.dart';
 import 'package:nike/providers/setting_provider.dart';
 import 'package:nike/screens/cart/cart_screen.dart';
+import 'package:nike/screens/favorite/favorite_screen.dart';
 import 'package:nike/screens/setting/setting_screen.dart';
 import 'package:nike/screens/widgets/scaffold_with_nav_bar.dart';
 import 'package:nike/setting_language.dart';
 import 'app_theme.dart';
 import 'screens/home/home_screen.dart';
+import 'screens/splash/splash_screen.dart';
 
 Future main() async{
   await Hive.initFlutter();
@@ -28,7 +30,7 @@ final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorKey = GlobalKey<NavigatorState>();
 
 final _router = GoRouter(
-  initialLocation: '/',
+  initialLocation: '/splash',
   navigatorKey: _rootNavigatorKey,
   routes: [
     ShellRoute(
@@ -50,13 +52,25 @@ final _router = GoRouter(
           },
         ),
         GoRoute(
+          path: '/yeuthich',
+          builder: (context, state) {
+            return FavoriteScreen();
+          },
+        ),
+        GoRoute(
           path: '/setting',
           builder: (context, state) {
             return SettingScreen();
           }
         ),
       ],
-    )
+    ),
+    GoRoute(
+      path: '/splash',
+      builder: (context, state) {
+        return SplashScreen();
+      },
+    ),
   ],
 );
 
@@ -80,27 +94,5 @@ class MyApp extends ConsumerWidget {
       locale: languageMode,
       routerConfig: _router,
     );
-  }
-}
-
-class GoRouterObserver extends NavigatorObserver {
-  @override
-  void didPush(Route<dynamic> route, Route<dynamic>? previousRoute) {
-    print('MyTest didPush: $route');
-  }
-
-  @override
-  void didPop(Route<dynamic> route, Route<dynamic>? previousRoute) {
-    print('MyTest didPop: $route');
-  }
-
-  @override
-  void didRemove(Route<dynamic> route, Route<dynamic>? previousRoute) {
-    print('MyTest didRemove: $route');
-  }
-
-  @override
-  void didReplace({Route<dynamic>? newRoute, Route<dynamic>? oldRoute}) {
-    print('MyTest didReplace: $newRoute');
   }
 }

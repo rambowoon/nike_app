@@ -9,3 +9,7 @@ final settingProvider = NotifierProvider<SettingNotifier, ThemeMode>(() {
 final languageProvider = NotifierProvider<LanguageNotifier, Locale>(() {
   return LanguageNotifier();
 });
+
+final splashProvider = NotifierProvider<SplashNotifier, bool>(() {
+  return SplashNotifier();
+});

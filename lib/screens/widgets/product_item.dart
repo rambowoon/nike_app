@@ -15,8 +15,11 @@ class ProductItem extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final cart = ref.read(cartProvider.notifier);
-    final favoriteProducts = ref.watch(favoriteProductsProvider);
-    final checkFavorite = favoriteProducts.contains(product.id ?? 0);
+    final favorite = ref.watch(favoriteProvider);
+    bool checkFavorite = false;
+    if(favorite.value != null) {
+      checkFavorite = favorite.value!.contains(product.id ?? 0);
+    }
 
     return Card(
       child: Column(
@@ -42,7 +45,7 @@ class ProductItem extends ConsumerWidget {
                     color: Colors.red,
                   ),
                   onPressed: () {
-                    ref.read(favoriteProductsProvider.notifier).toggle(product.id ?? 0);
+                    ref.read(favoriteProvider.notifier).toggle(product.id ?? 0);
                   },
                 ),
               )

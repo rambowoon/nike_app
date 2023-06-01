@@ -28,19 +28,19 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
       ),
       MyCustomBottomNavBarItem(
         icon: Icon(Icons.favorite_outlined),
-        activeIcon: Icon(Icons.explore),
+        activeIcon: Icon(Icons.favorite_outlined),
         label: ngonngu(context).yeuthich,
         initialLocation: '/yeuthich',
       ),
       MyCustomBottomNavBarItem(
-        icon: Icon(Icons.add_alert),
-        activeIcon: Icon(Icons.storefront),
+        icon: Icon(Icons.list_alt),
+        activeIcon: Icon(Icons.list_alt),
         label: ngonngu(context).thongbao,
         initialLocation: '/thongbao',
       ),
       MyCustomBottomNavBarItem(
         icon: Icon(Icons.settings),
-        activeIcon: Icon(Icons.account_circle),
+        activeIcon: Icon(Icons.settings),
         label: ngonngu(context).caidat,
         initialLocation: '/setting',
       ),
