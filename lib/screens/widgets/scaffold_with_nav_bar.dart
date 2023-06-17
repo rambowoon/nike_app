@@ -35,8 +35,8 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
       MyCustomBottomNavBarItem(
         icon: Icon(Icons.list_alt),
         activeIcon: Icon(Icons.list_alt),
-        label: ngonngu(context).thongbao,
-        initialLocation: '/thongbao',
+        label: ngonngu(context).tintuc,
+        initialLocation: '/tintuc',
       ),
       MyCustomBottomNavBarItem(
         icon: Icon(Icons.settings),

@@ -7,11 +7,18 @@ class ProductController extends AsyncNotifier<List<ProductModel>> {
 
   @override
   Future<List<ProductModel>> build() async {
-    return await getAllProduct();
+    return await getAllProduct(page: 1, limit: 10);
   }
 
-  Future<List<ProductModel>> getAllProduct() async {
-    final list = await _productRepositoreies.getAllProducts(page: 1, limit: 20);
+  Future<List<ProductModel>> getAllProduct({required int page, required int limit}) async {
+    final list = await _productRepositoreies.getAllProducts(page: 1, limit: 10);
     return list;
+  }
+
+  Future<void> nextProduct() async {
+    state = const AsyncValue.loading();
+    state = await AsyncValue.guard(() async {
+      return await getAllProduct(page: 2, limit: 10);
+    });
   }
 }

@@ -13,6 +13,7 @@ import 'package:nike/screens/widgets/scaffold_with_nav_bar.dart';
 import 'package:nike/setting_language.dart';
 import 'app_theme.dart';
 import 'screens/home/home_screen.dart';
+import 'screens/news/news_screen.dart';
 import 'screens/splash/splash_screen.dart';
 
 Future main() async{
@@ -55,6 +56,12 @@ final _router = GoRouter(
           path: '/yeuthich',
           builder: (context, state) {
             return FavoriteScreen();
+          },
+        ),
+        GoRoute(
+          path: '/tintuc',
+          builder: (context, state) {
+            return NewsScreen();
           },
         ),
         GoRoute(

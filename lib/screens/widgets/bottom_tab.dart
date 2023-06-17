@@ -19,7 +19,7 @@ class _BottomTabState extends State<BottomTab> {
       items: [
         BottomNavigationBarItem(icon: Icon(Icons.home, color: kIconColor,), label: ngonngu(context).trangchu, activeIcon: Icon(Icons.home, color: kPrimaryColor,)),
         BottomNavigationBarItem(icon: Icon(Icons.favorite_outlined, color: kIconColor,), label: ngonngu(context).yeuthich, activeIcon: Icon(Icons.favorite_outlined, color: kPrimaryColor,)),
-        BottomNavigationBarItem(icon: Icon(Icons.add_alert, color: kIconColor,), label: ngonngu(context).thongbao, activeIcon: Icon(Icons.add_alert, color: kPrimaryColor,)),
+        BottomNavigationBarItem(icon: Icon(Icons.add_alert, color: kIconColor,), label: ngonngu(context).tintuc, activeIcon: Icon(Icons.add_alert, color: kPrimaryColor,)),
         BottomNavigationBarItem(icon: Icon(Icons.settings, color: kIconColor,), label: ngonngu(context).caidat, activeIcon: Icon(Icons.settings, color: kPrimaryColor,))
       ],
       currentIndex: _selectedIndex,

@@ -80,11 +80,11 @@ class S {
     );
   }
 
-  /// `Notification`
-  String get thongbao {
+  /// `News`
+  String get tintuc {
     return Intl.message(
-      'Notification',
-      name: 'thongbao',
+      'News',
+      name: 'tintuc',
       desc: '',
       args: [],
     );
